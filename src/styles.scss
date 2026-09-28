@@ -1,0 +1,87 @@
+// Include theming for Angular Material with `mat.theme()`.
+// This Sass mixin will define CSS variables that are used for styling Angular Material
+// components according to the Material 3 design spec.
+// Learn more about theming and how to use it for your application's
+// custom components at https://material.angular.dev/guide/theming
+@use '@angular/material' as mat;
+
+html {
+  height: 100%;
+  @include mat.theme(
+    (
+      color: (
+        primary: mat.$azure-palette,
+        tertiary: mat.$blue-palette,
+      ),
+      typography: Roboto,
+      density: 0,
+    )
+  );
+}
+
+body {
+  // Default the application to a light color theme. This can be changed to
+  // `dark` to enable the dark color theme, or to `light dark` to defer to the
+  // user's system settings.
+  color-scheme: light;
+
+  // Set a default background, font and text colors for the application using
+  // Angular Material's system-level CSS variables. Learn more about these
+  // variables at https://material.angular.dev/guide/system-variables
+  background-color: var(--mat-sys-surface);
+  color: var(--color-satellite-text); 
+  font-family: var(--font-family); 
+
+  // Reset the user agent margin.
+  margin: 0;
+  height: 100%;
+}
+/* You can add global styles to this file, and also import other style files */
+
+
+:root {
+  // global vars 
+  --font-family: ui-monospace, 'Cascadia Code'; 
+  --color-space-dark: #220011;
+  --color-space-black: #090a0f;
+  --color-satellite-bg: rgba(255, 255, 255, 0.14); // #ffffff24 in rgba
+  --color-satellite-text: rgba(252, 252, 252, 0.78); // #fcfcfcc6 in rgba
+  --color-glow-white: rgba(255, 255, 255, 0.36); 
+
+
+  @include mat.chips-overrides((
+    label-text-color: var(--color-satellite-text),
+    label-text-font: var(--font-family),
+  )); 
+
+  @include mat.card-overrides((
+    title-text-font: var(--font-family), 
+    subtitle-text-color: var(--color-glow-white), 
+    subtitle-text-font: var(--font-family),  
+  )); 
+
+  @include mat.button-overrides((
+    filled-container-color: var(--color-satellite-bg),  
+    filled-label-text-color: var(--color-satellite-text), 
+    filled-label-text-font: var(--font-family), 
+  )); 
+
+  @include mat.divider-overrides((
+    color: var(--color-glow-white)
+  ));
+}
+
+
+/* Hide scrollbar */
+/* Target the main document and Angular's root wrapper */
+html, body, app-root {
+  margin: 0;
+  padding: 0;
+  scrollbar-width: none !important; /* Firefox */
+  -ms-overflow-style: none !important; /* IE/Edge */
+}
+
+/* Chrome/Safari/Opera */
+::-webkit-scrollbar {
+  display: none !important; 
+}

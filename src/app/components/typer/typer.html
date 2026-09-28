@@ -1,0 +1,18 @@
+  @for(line of displayLines(); track $index) {
+    <div 
+      class="typer" 
+      [class.visible]="line.isVisible"
+      [class.instant]="line.typingSpeed === 0"
+      [style.font-size.px]="line.fontSize" 
+    >
+      <span class="ghost-text" aria-hidden="true">{{ line.text }}</span> 
+
+      <div class="line-content">
+        <span class="text" >{{ line.displayedText }}</span>  
+      
+        @if(line.isCursorVisible) {
+          <span class="cursor" >_</span>
+        } 
+      </div>
+    </div>
+  }

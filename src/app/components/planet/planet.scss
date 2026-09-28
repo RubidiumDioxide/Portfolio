@@ -1,0 +1,93 @@
+.space-scene {
+  position: relative;
+  width: 100%;
+  flex: 1; 
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  perspective: 1200px;
+  transform-style: preserve-3d; 
+}
+
+.planet {
+  position: absolute;
+  width: var(--planet-size);
+  height: var(--planet-size);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  background: linear-gradient(to bottom right, var(--theme-primary), var(--theme-dark));
+  box-shadow:
+    inset -10px -20px 30px var(--theme-dark),
+    0 0 50px var(--theme-dark);
+}
+
+.satellite {
+  position: absolute; 
+  left: 50%;
+  top: 50%;
+  width: var(--satellite-size);
+  height: var(--satellite-size);
+  margin-left: calc(var(--satellite-size) / -2);
+  margin-top: calc(var(--satellite-size) / -2);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+  animation: orbit 15s linear infinite;
+
+  .icon-wrapper {
+    width: 100%;
+    height: 100%;
+    background: var(--color-satellite-bg);
+    color: var(--color-satellite-text);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 10px var(--color-glow-white); 
+    
+    p {
+      margin: 0;
+      font-size: 120%;
+      line-height: 1.1;
+      color: inherit;
+      word-break: break-word;
+    }
+  }
+}
+
+.mat-icon {
+  font-size: 42px;
+  width: 42px;
+  height: 42px;
+}
+
+
+@keyframes orbit {
+  0% {
+    transform: 
+      rotateZ(var(--roll-angle))
+      rotateX(var(--tilt-angle))
+      rotateY(0deg) 
+      translateX(var(--orbit-radius)) 
+      rotateY(0deg) 
+      rotateX(calc(var(--tilt-angle) * -1)) 
+      rotateZ(calc(var(--roll-angle) * -1)) 
+  }
+  100% {
+    transform: 
+      rotateZ(var(--roll-angle))
+      rotateX(var(--tilt-angle))
+      rotateY(360deg) 
+      translateX(var(--orbit-radius)) 
+      rotateY(-360deg) 
+      rotateX(calc(var(--tilt-angle) * -1)) 
+      rotateZ(calc(var(--roll-angle) * -1)) 
+  }
+}

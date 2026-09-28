@@ -1,0 +1,146 @@
+@use "sass:list";
+@use "sass:math";
+@use "sass:string";
+
+
+// generates random coordinates 
+@function generate-stars($n) {
+  $star-colors: (#ffffff, #fffdfa, #e2f0ff);
+  $value: '#{math.random(2000)}px #{math.random(2000)}px #{list.nth($star-colors, math.random(list.length($star-colors)))}';
+  
+  @for $i from 2 through $n {
+    $color: list.nth($star-colors, math.random(list.length($star-colors)));
+    $value: '#{$value}, #{math.random(2000)}px #{math.random(7000)}px #{$color}';
+  }
+  @return string.unquote($value);
+}
+
+$stars-small: generate-stars(1000);
+$stars-medium: generate-stars(300); 
+
+.project-card-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px; 
+}
+
+.typer-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column; 
+  padding: 10px; 
+}
+
+.planet-grid {
+  position: relative; 
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, minmax(0, 400px));
+  justify-items: center;
+  align-items: center;  
+  gap: 50px; 
+}
+
+.space-background { 
+  position: relative; 
+  box-sizing: border-box;  
+  overflow: hidden; 
+  width: 100%;
+  min-height: 100vh;   
+  padding: 100px;  
+
+  background:
+    linear-gradient(to bottom right, #000000, transparent 50%),
+    radial-gradient(circle at center, #090a0f, #220011); 
+  
+  // small background stars
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1.4px;
+    height: 1.4px;
+    background: transparent;
+    box-shadow: $stars-small;
+    animation: twinkle 3s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+
+  // medium foreground stars
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2.1px;
+    height: 2.1px;
+    border-radius: 50%;
+    background: transparent;
+    box-shadow: $stars-medium;
+    animation: twinkle 5s ease-in-out infinite alternate 1.5s;
+    pointer-events: none;
+  } 
+} 
+
+// meteor styling
+.meteor {
+  position: absolute;
+  height: 2px;
+  background: linear-gradient(45deg, #ffffff, rgba(255, 255, 255, 0));
+  filter: drop-shadow(0 0 6px #ff7272);
+  pointer-events: none;
+  opacity: 0;
+  animation: meteor-fall 4s ease-in-out infinite;
+
+  // glowing meteor head
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff;
+  }
+}
+
+// randomizes starting positions, tail lengths, delays, and speeds for up to 8 meteors
+@for $i from 1 through 10 {
+  .meteor:nth-child(#{$i}) {
+    top: #{math.random(5000) - 20}px;
+    right: #{math.random(1000) - 20}px;
+    width: #{math.random(100) + 100}px;
+    animation-delay: #{math.div(math.random(80), 10)}s;
+    animation-duration: #{math.div(math.random(25), 10) + 2}s;
+  }
+}
+
+
+@keyframes twinkle {
+  0% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 0.9;
+  }
+} 
+
+@keyframes meteor-fall {
+  0% {
+    opacity: 0;
+    transform: rotate(-45deg) translateX(0);
+  }
+  15% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(-45deg) translateX(-1000px);
+  }
+}

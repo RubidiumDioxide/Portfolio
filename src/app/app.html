@@ -1,0 +1,101 @@
+<title>Портфолио</title> 
+
+<div class="space-background"> 
+    @for (i of [].constructor(10); track $index) {
+        <div class="meteor"></div>
+    }
+
+    <div class="typer-container" style="padding-top:50px; min-height: 500px; ">
+        <app-typer [lines]="[
+                { text: 'Добро пожаловать!  ', fontSize: 80, typingSpeed: 1 },
+                { text: 'Меня зовут Лия, я fullstack С# разработчик. На этой странице вы можете ознакомиться с моими пет-проектами и полным списком фреймворков и инструментов, с которыми я работаю. ', fontSize: 40, typingSpeed: 0 }
+            ]" />
+    </div>
+
+    <div class="planet-grid">
+        <!-- backend & deployment -->
+        <app-planet icon="database"
+                    [icons]="['csharp', 'dotnet', 'efcore', 'swagger', 'linq', 'oauth', 'nginx', 'docker', 'iis']"
+                    theme="red" 
+                    planetSize="200px" 
+                    orbitRadius="220px" 
+                    tiltAngle="-10deg" 
+                    rollAngle="-10deg" 
+                    animationDuration="24"
+                    style="grid-column: 1; grid-row: 1;" /> 
+
+        <div class="typer-container" style="grid-row: 1; grid-column-start: 2; grid-column: span 2;"> 
+            <app-typer style="text-align: end; align-items: end;" 
+                [lines]="[
+                    { text: 'Бэкенд и развертывание', fontSize: 40, typingSpeed: 1 },
+                    { text: 'Я работала с платформой ASP.NET Core в рамках коммерческой разработки и продолжаю изучать ее для собственных проектов. Для работы с базами данных использую Entity Framework Core, есть опыт работы с OAuth и OIDC. Стараюсь строить приложения согласно принципам SOLID и DDD. Для развертывания использую Docker, также знакома с IIS. ', fontSize: 20, typingSpeed: 0 }
+                ]" />
+        </div>
+
+                    
+        <!-- frontend -->            
+        <app-planet [icons]="['blazor', 'angular', 'nodejs', 'react', 'javascript', 'typescript', 'bootstrap', 'npm']"
+                    theme="purple" 
+                    planetSize="180px" 
+                    orbitRadius="190px" 
+                    tiltAngle="-40deg" 
+                    rollAngle="-12deg" 
+                    animationDuration="24" 
+                    style="grid-column: 3; grid-row: 2;"/> 
+
+        <div class="typer-container" style="grid-row: 2; grid-column-start: 1; grid-column: span 2;"> 
+            <app-typer [lines]="[
+                    { text: 'Фронтенд', fontSize: 40, typingSpeed: 1 },
+                    { text: 'Больше всего из фронтенд-фреймворков мне нравится Blazor (конкретно - модель размещения Blazor Server), в связке с ним использую MudBlazor/Bootstrap. Также работала с SPA на React, иногда использую React-компоненты в приложениях Blazor Server. На данный момент больше всего заинтересована в изучении Angular и RxJS. ', fontSize: 20, typingSpeed: 0 }
+                ]" />
+        </div>
+
+        
+        <!-- storage -->
+        <app-planet [icons]="['postgresql', 'sqlserver', 'redis', 'sqlite']"
+                    theme="blue" 
+                    planetSize="190px" 
+                    orbitRadius="210px" 
+                    tiltAngle="-14deg" 
+                    rollAngle="-6deg" 
+                    animationDuration="24"
+                    style="grid-column: 1; grid-row: 3;" /> 
+        
+        <div class="typer-container" style="grid-row: 3; grid-column-start: 1; grid-column: span 2;"> 
+            <app-typer style="text-align: end; align-items: end;" 
+                [lines]="[
+                    { text: 'Данные', fontSize: 40, typingSpeed: 1 },
+                    { text: 'Я работала с PostgreSQL и MS SQL Server, в последнее время чаще всего подходом code-first. Иногда использую SQLite для тестирования, для кэширования результатов запросов - Redis. ', fontSize: 20, typingSpeed: 0 }
+                ]" />
+        </div>
+        
+
+        <!-- IDE & version control & misc -->
+        <app-planet [icons]="['git', 'github', 'visualstudio', 'vscode', 'ollama' ]"
+                    theme="cyan" 
+                    planetSize="210px" 
+                    orbitRadius="240px" 
+                    tiltAngle="-30deg" 
+                    rollAngle="-14deg" 
+                    animationDuration="24" 
+                    style="grid-column: 3; grid-row: 4;" /> 
+
+        <div class="typer-container" style="grid-row: 4; grid-column-start: 1; grid-column: span 2;"> 
+            <app-typer 
+                [lines]="[
+                    { text: 'Системы контроля версий, IDE и другие инструменты', fontSize: 40, typingSpeed: 3 },
+                    { text: 'В качестве IDE чаще всего использую Visual Studio, иногда - Visual Studio Code, для контроля версий - Git. Для тестов - xUnit и GitHub Actions. Есть опыт подключения и интеграции языковых моделей на Ollama в проекты на ASP.NET Core. ', fontSize: 20, typingSpeed: 0 }
+                ]" />
+        </div> 
+    </div> 
+
+    <div class="typer-container" style="padding-top: 200px; text-align: center; ">
+        <app-typer [lines]="[{ text: 'Мои проекты', fontSize: 40, typingSpeed: 1 }, ]" />
+    </div>
+
+    <div class="project-card-container">
+        @for (project of projects(); track project.title; let i = $index) {
+            <app-project-card [project]=project [index]=i />   
+        }
+    </div>
+</div>  

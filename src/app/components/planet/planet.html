@@ -1,0 +1,15 @@
+<div class="space-scene">
+  <div class="planet"></div> 
+
+  @for (satellite of satellites(); track satellite.icon.name) {
+    <div class="satellite" [ngStyle]="satellite.style"> 
+      <div class="icon-wrapper" [matTooltip]="satellite.icon.title">
+        @if (satellite.icon.isFromText) {
+          <p>{{ satellite.icon.displayText }}</p> 
+        } @else {
+          <mat-icon [svgIcon]="satellite.icon.name"></mat-icon>
+        } 
+      </div>   
+    </div>  
+  }
+</div>

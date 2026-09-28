@@ -1,0 +1,27 @@
+<mat-card class="project-card">
+  <mat-card-header>
+    <mat-card-title>{{ project().title }}</mat-card-title>
+    <mat-card-subtitle>{{ project().subtitle }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="mat-card-content-text"> 
+      {{ project().description }}
+    </div> 
+
+    <mat-divider></mat-divider>
+
+    <div class="mat-card-content-chip-set">
+      <mat-chip-set style="padding-top: 10px; ">
+        @for(stackItem of project().stack; track $index ) {
+          <mat-chip>{{ stackItem }}</mat-chip>
+        } 
+      </mat-chip-set>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <a mat-flat-button [href]=project().repoLink target="_blank" rel="noopener noreferrer"> Репозиторий </a> 
+    @if(project().demoLink){
+      <a mat-flat-button [href]=project().demoLink target="_blank" rel="noopener noreferrer"> Демо </a> 
+    }
+  </mat-card-actions>
+</mat-card>
