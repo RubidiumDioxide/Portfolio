@@ -1,4 +1,9 @@
 <mat-card class="project-card">
+  <span 
+    [class]="`status-badge status-${project().isFinished? 'finished' : 'inProgress'}`">
+    {{ project().isFinished? 'завершен' : 'дорабатывается' }}
+  </span>
+
   <mat-card-header>
     <mat-card-title>{{ project().title }}</mat-card-title>
     <mat-card-subtitle>{{ project().subtitle }}</mat-card-subtitle>

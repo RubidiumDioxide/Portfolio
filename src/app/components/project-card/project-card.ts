@@ -28,7 +28,8 @@ export class ProjectCard implements OnInit, AfterViewInit{
     subtitle: "subtitle", 
     description: "description", 
     stack: ["a", "b", "c"], 
-    repoLink: "/"
+    repoLink: "/", 
+    isFinished: false  
   });  
 
   public index = input<number>(0);

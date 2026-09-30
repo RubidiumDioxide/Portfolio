@@ -11,20 +11,23 @@ const projects:Project[] = [
     subtitle: "веб-приложение", 
     description: "Система управления проектами для независимых команд с интеграцией Github и встроенным чат-ботом на Ollama. ", 
     stack: ["ASP.NET Core", "Entity Framework Core", "MS SQL Server", "OAuth2", "Octokit", "Ollama", "Blazor Server", "MudBlazor", "React", "webpack", "xUnit"], 
-    repoLink: "https://github.com/RubidiumDioxide/SOUPI"  
+    repoLink: "https://github.com/RubidiumDioxide/SOUPI", 
+    isFinished: true 
   }, 
   { title: "PingV", 
     subtitle: "веб-приложение", 
     description: "Веб-приложение для управления своим расписанием и создания вишлистов для небольших групп пользователей. ", 
     stack: ["ASP.NET Core", "Entity Framework Core", "PostgreSQL", "Redis", "Docker", "Nginx", "Angular", "Material Angular"], 
-    repoLink: "https://github.com/RubidiumDioxide/PingV"   
+    repoLink: "https://github.com/RubidiumDioxide/PingV",   
+    isFinished: false  
   }, 
   { title: "Orbita", 
     subtitle: "angular-компонент", 
     description: "Маленькие css-планеты. Крутятся. ", 
     stack: ["Angular", "Material Angular"], 
     repoLink: "https://github.com/RubidiumDioxide/Orbita", 
-    demoLink: "https://rubidiumdioxide.github.io/Orbita/"  
+    demoLink: "https://rubidiumdioxide.github.io/Orbita/",  
+    isFinished: false  
   }, 
 ]
 

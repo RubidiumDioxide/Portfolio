@@ -4,5 +4,6 @@ export interface Project {
     description: string, 
     stack: string[], 
     repoLink: string, 
-    demoLink?: string
+    demoLink?: string, 
+    isFinished: boolean 
 }

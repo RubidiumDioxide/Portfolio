@@ -1,4 +1,5 @@
 .project-card {
+    position: relative; 
     padding: 24px; 
     border-radius: 12px;
     border: 1px solid var(--color-satellite-bg); 
@@ -26,7 +27,30 @@
     .mat-card-content-chip-set {
         min-height: 200px; 
     }
+
+    .status-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 400;
+      text-transform: uppercase; 
+      z-index: 1; 
+    }
+
+    .status-badge.status-finished {
+      color: #00e1ff;
+      background-color: #00e1ff3d;
+    }
+
+    .status-badge.status-inProgress {
+      color: #00ff84;
+      background-color: #00ff843d;
+    }
 }
+
 
 :host {
   display: block; 
