@@ -18,7 +18,7 @@ const projects:Project[] = [
     subtitle: "веб-приложение", 
     description: "Веб-приложение для управления своим расписанием и создания вишлистов для небольших групп пользователей. ", 
     stack: ["ASP.NET Core", "Entity Framework Core", "PostgreSQL", "Redis", "Docker", "Nginx", "Angular", "Material Angular"], 
-    repoLink: "https://github.com/RubidiumDioxide/PingV",   
+    repoLink: "https://github.com/RubidiumDioxide/PingV/tree/develop",   
     isFinished: false  
   }, 
   { title: "Orbita", 
